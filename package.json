@@ -1,0 +1,28 @@
+{
+  "name": "typescript-min-of-read",
+  "version": "1.0.0",
+  "description": "TypeScript Library to get estimate of reading time for the article",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keke78ui9/typescript-min-of-read.git"
+  },
+  "author": "keke78ui9",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keke78ui9/typescript-min-of-read/issues"
+  },
+  "homepage": "https://github.com/keke78ui9/typescript-min-of-read#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0"
+  }
+}
