@@ -9,8 +9,9 @@ function sum(a, b) {
   function subtraction(a, b) {
     return a -b;
   }
-  module.exports = {
-    sum,
-    subtraction,
-    exponent
-  };
+
+export {
+  sum,
+  subtraction,
+  exponent
+}
