@@ -5,7 +5,7 @@ test('test sum', () => {
 });
 
 test('test subtraction', () => {
-    expect(subtraction(10, 2)).toBe(8);
+    expect(subtraction(10, 2)).toBe(8);    
 });
 
 test('test exponent', () => {
