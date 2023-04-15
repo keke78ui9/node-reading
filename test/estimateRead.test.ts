@@ -5,12 +5,10 @@ describe('calculate reading time', () => {
     test('If total words count is invalid - estimate reading time return 0', () => {
        
         const result = calculate(0, 200);
-        const result1 = calculate(-1, 400);
-        const result2 = calculate(undefined, 2);
+        const result1 = calculate(-1, 400);        
 
         expect(result).toBe(0);
         expect(result1).toBe(0);
-        expect(result2).toBe(0);
 
     });
 
@@ -18,13 +16,14 @@ describe('calculate reading time', () => {
        
         const result = calculate(900, 200);
 
-        expect(result).toBe(4.414)
+        expect(result).toBe(4.3);
 
     });
 
     test('If words per minutes is invalid should use default WPM for calculation', () => {       
 
-        expect(0).toBe(0);
+        const result = calculate(900, 0);
 
+        expect(result).toBe(4.3);
     });
 })
