@@ -7,8 +7,8 @@ describe('calculate reading time', () => {
         const result = calculate(0, 200);
         const result1 = calculate(-1, 400);        
 
-        expect(result).toBe(0);
-        expect(result1).toBe(0);
+        expect(result.data).toBe(0);
+        expect(result1.data).toBe(0);
 
     });
 
@@ -16,7 +16,8 @@ describe('calculate reading time', () => {
        
         const result = calculate(900, 200);
 
-        expect(result).toBe(5);
+        expect(result.data).toBe(5);
+        expect(result.detail).toBe(4.3);
 
     });
 
@@ -24,6 +25,13 @@ describe('calculate reading time', () => {
 
         const result = calculate(900, 0);
 
-        expect(result).toBe(5);
+        expect(result.data).toBe(5);
+    });
+
+    test('If words per minutes is valid should get correct result - case 1', () => {       
+
+        const result = calculate(1501, 100);
+
+        expect(result.data).toBe(16);
     });
 })

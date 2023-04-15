@@ -6,7 +6,10 @@ import { EstimateResult } from "./estimateResult";
  * @param wordsPerMinute words per minute (WPM) * 
  */
 function calculateReadingTime(totalWords:number, wordsPerMinute:number): EstimateResult {    
-    const estimateRet = {} as EstimateResult;
+    const estimateRet = {
+        data: 0,
+        detail: 0
+    } as EstimateResult;
 
     if (!totalWords || totalWords < 1) {
         return estimateRet;
@@ -22,7 +25,7 @@ function calculateReadingTime(totalWords:number, wordsPerMinute:number): Estimat
 
     const secondsMore = decimalPart * secondFactor;
     
-    estimateRet.result = Math.ceil(numberPart + secondsMore);
+    estimateRet.data = Math.ceil(numberPart + secondsMore);
     estimateRet.detail = numberPart + secondsMore;
     return estimateRet;
 }

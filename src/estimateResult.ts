@@ -1,4 +1,4 @@
 export interface EstimateResult {
-    result: number;
+    data: number;
     detail: number;
 }
