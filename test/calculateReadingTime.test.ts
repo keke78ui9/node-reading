@@ -1,4 +1,4 @@
-import {calculate} from '../src/estimateRead';
+import {calculate} from '../src/calculateReadingTime';
 import {describe, expect, test} from '@jest/globals';
 
 describe('calculate reading time', () => {
