@@ -1,16 +1,18 @@
+import { EstimateResult } from "./estimateResult";
 
 /**
  * calculate reading time (default WPF is 200)
  * @param totalWords total words
  * @param wordsPerMinute words per minute (WPM) * 
  */
-function calculateReadingTime(totalWords:number, wordsPerMinute:number): number {
+function calculateReadingTime(totalWords:number, wordsPerMinute:number): EstimateResult {    
+    const estimateRet = {} as EstimateResult;
+
     if (!totalWords || totalWords < 1) {
-        return 0;
+        return estimateRet;
     }
 
     wordsPerMinute = wordsPerMinute < 1 ? 200 : wordsPerMinute;
-
     const secondFactor = 0.6;
 
     const firstReadTime = totalWords / wordsPerMinute;
@@ -20,7 +22,9 @@ function calculateReadingTime(totalWords:number, wordsPerMinute:number): number 
 
     const secondsMore = decimalPart * secondFactor;
     
-    return numberPart + secondsMore;
+    estimateRet.result = Math.ceil(numberPart + secondsMore);
+    estimateRet.detail = numberPart + secondsMore;
+    return estimateRet;
 }
 
 export {calculateReadingTime as calculate};

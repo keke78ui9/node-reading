@@ -16,7 +16,7 @@ describe('calculate reading time', () => {
        
         const result = calculate(900, 200);
 
-        expect(result).toBe(4.3);
+        expect(result).toBe(5);
 
     });
 
@@ -24,6 +24,6 @@ describe('calculate reading time', () => {
 
         const result = calculate(900, 0);
 
-        expect(result).toBe(4.3);
+        expect(result).toBe(5);
     });
 })
