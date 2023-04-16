@@ -30,4 +30,12 @@ function calculateReadingTime(totalWords:number, wordsPerMinute:number): Estimat
     return estimateRet;
 }
 
-export {calculateReadingTime as calculate};
+function getTotalWords(targetSelector:string): number {
+    if (!targetSelector) {
+        return 0;
+    }
+
+    return 0;
+}
+
+export {calculateReadingTime as calculate, getTotalWords};
