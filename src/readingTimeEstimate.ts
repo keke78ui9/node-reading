@@ -1,11 +1,12 @@
 import { EstimateResult } from "./estimateResult";
+import { RequestTimeOption } from "./requestTimeOption";
 
 /**
  * calculate reading time (default WPF is 200)
  * @param totalWords total words
  * @param wordsPerMinute words per minute (WPM) * 
  */
-function calculateReadingTime(totalWords:number, wordsPerMinute:number): EstimateResult {    
+function calculateReadingTime(totalWords:number, wordsPerMinute?:number): EstimateResult {    
     const estimateRet = {
         data: 0,
         detail: 0
@@ -15,7 +16,7 @@ function calculateReadingTime(totalWords:number, wordsPerMinute:number): Estimat
         return estimateRet;
     }
 
-    wordsPerMinute = wordsPerMinute < 1 ? 200 : wordsPerMinute;
+    wordsPerMinute = (!wordsPerMinute || wordsPerMinute < 1) ? 200 : wordsPerMinute;
     const secondFactor = 0.6;
 
     const firstReadTime = totalWords / wordsPerMinute;
@@ -43,4 +44,19 @@ function getTotalWords(targetSelector:string): number {
     return targetElement.textContent.split(" ").length;
 }
 
-export {calculateReadingTime as calculate, getTotalWords};
+function getTime(option:RequestTimeOption): number {
+    if (!option) {
+        return 0;
+    }
+
+    let time = 0;
+    option.selectors.forEach(selector => {
+        const totalWords = getTotalWords(selector);
+        const eleTime = calculateReadingTime(totalWords, option.wordsPerMinute);
+        time += eleTime.data;
+    });
+
+    return time;
+}
+
+export {calculateReadingTime as calculate, getTotalWords, getTime};
