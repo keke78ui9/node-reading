@@ -72,7 +72,7 @@ describe('calculate reading time', () => {
         div.textContent = "test apple is check"
         document.body.appendChild(div);
         
-        const result = getTotalWords('target');
+        const result = getTotalWords('.target');
         expect(result).toBe(4);
 
     })

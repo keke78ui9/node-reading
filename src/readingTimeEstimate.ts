@@ -35,7 +35,12 @@ function getTotalWords(targetSelector:string): number {
         return 0;
     }
 
-    return 0;
+    const targetElement = document.querySelector(targetSelector);
+    if (!targetElement || !targetElement.textContent) {
+        return 0;
+    }
+
+    return targetElement.textContent.split(" ").length;
 }
 
 export {calculateReadingTime as calculate, getTotalWords};
