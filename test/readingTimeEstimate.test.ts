@@ -40,7 +40,7 @@ describe('calculate reading time', () => {
     });
 })
 
-describe('calculate reading time', () => {
+describe('get total words from DOM', () => {
     beforeEach(() => {
         document.body.innerHTML = '';
     });
