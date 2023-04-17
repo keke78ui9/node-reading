@@ -2,8 +2,9 @@
  * @jest-environment jsdom
  */
 
-import {calculate, getTotalWords} from '../src/readingTimeEstimate';
+import {calculate, getTotalWords, getTime} from '../src/readingTimeEstimate';
 import {describe, expect, test} from '@jest/globals';
+import { RequestTimeOption } from '../src/requestTimeOption';
 
 describe('calculate reading time', () => {
     test('If total words count is invalid - estimate reading time return 0', () => {
@@ -76,4 +77,55 @@ describe('get total words from DOM', () => {
         expect(result).toBe(4);
 
     })
+})
+
+describe('get reading time by target selectors', () => {
+    beforeEach(() => {
+        document.body.innerHTML = '';
+    });
+
+    test('if pass invalid selectors should return 0', () => {
+        const result = getTime({
+            selectors: ['']
+        } as RequestTimeOption);
+        expect(result).toBe(0);
+    });
+
+    test('if pass one selector not exist should return 0', () => {
+        const result = getTime({
+            selectors: ['.test_selector']
+        } as RequestTimeOption);
+        expect(result).toBe(0);
+    });
+
+    test('if pass more then one selectors and not exist should return 0', () => {
+        const result = getTime({
+            selectors: ['.test_selector', '.other-selector']
+        } as RequestTimeOption);
+        expect(result).toBe(0);
+    });
+
+    test('if selectors exist but not content should return 0', () => {
+        const div = document.createElement('div');
+        div.setAttribute('class', 'target');
+        document.body.appendChild(div);
+
+        const result = getTime({
+            selectors: ['.target']
+        } as RequestTimeOption);
+        expect(result).toBe(0);
+
+    });
+
+    test('if selectors exist and has contents should return reading time', () => {
+        const div = document.createElement('div');
+        div.setAttribute('class', 'target');
+        div.textContent = "test apple is check"
+        document.body.appendChild(div);
+
+        const result = getTime({
+            selectors: ['.target']
+        } as RequestTimeOption);
+        expect(result).toBe(1);
+    });
 })
