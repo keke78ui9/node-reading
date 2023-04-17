@@ -31,6 +31,11 @@ function calculateReadingTime(totalWords:number, wordsPerMinute?:number): Estima
     return estimateRet;
 }
 
+/**
+ * get total words count by selectors
+ * @param targetSelector 
+ * @returns 
+ */
 function getTotalWords(targetSelector:string): number {
     if (!targetSelector) {
         return 0;
@@ -44,6 +49,11 @@ function getTotalWords(targetSelector:string): number {
     return targetElement.textContent.split(" ").length;
 }
 
+/**
+ * get reading time base on the settings.
+ * @param option 
+ * @returns number as minutes
+ */
 function getTime(option:RequestTimeOption): number {
     if (!option) {
         return 0;
