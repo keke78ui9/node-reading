@@ -1,7 +1,7 @@
 {
-  "name": "typescript-min-of-read",
-  "version": "1.0.0",
-  "description": "TypeScript Library to get estimate of reading time for the article",
+  "name": "@keke78ui9/reading",
+  "version": "1.0.1",
+  "description": "TypeScript Utility Library to support reading",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -10,16 +10,16 @@
     "test": "jest",
     "test:coverage": "jest --coverage --silent"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/keke78ui9/typescript-min-of-read.git"
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
+  "repository": "https://github.com/keke78ui9/reading.git",
   "author": "keke78ui9",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/keke78ui9/typescript-min-of-read/issues"
+    "url": "https://github.com/keke78ui9/reading/issues"
   },
-  "homepage": "https://github.com/keke78ui9/typescript-min-of-read#readme",
+  "homepage": "https://github.com/keke78ui9/reading#readme",
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
