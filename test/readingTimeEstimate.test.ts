@@ -86,21 +86,21 @@ describe('get reading time by target selectors', () => {
 
     test('if pass invalid selectors should return 0', () => {
         const result = getTime({
-            selectors: ['']
+            selector: ''
         } as RequestTimeOption);
         expect(result).toBe(0);
     });
 
     test('if pass one selector not exist should return 0', () => {
         const result = getTime({
-            selectors: ['.test_selector']
+            selector: '.test_selector'
         } as RequestTimeOption);
         expect(result).toBe(0);
     });
 
     test('if pass more then one selectors and not exist should return 0', () => {
         const result = getTime({
-            selectors: ['.test_selector', '.other-selector']
+            selector: '.test_selector, .other-selector'
         } as RequestTimeOption);
         expect(result).toBe(0);
     });
@@ -111,7 +111,7 @@ describe('get reading time by target selectors', () => {
         document.body.appendChild(div);
 
         const result = getTime({
-            selectors: ['.target']
+            selector: '.target'
         } as RequestTimeOption);
         expect(result).toBe(0);
 
@@ -124,7 +124,7 @@ describe('get reading time by target selectors', () => {
         document.body.appendChild(div);
 
         const result = getTime({
-            selectors: ['.target']
+            selector: '.target'
         } as RequestTimeOption);
         expect(result).toBe(1);
     });
