@@ -2,7 +2,7 @@
   "name": "@keke78ui9/node-reading",
   "version": "1.0.5",
   "description": "TypeScript Node.js library to support reading.",
-  "main": "index.js",
+  "main": "index.ts",
   "directories": {
     "test": "test"
   },
