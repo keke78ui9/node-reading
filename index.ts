@@ -1,1 +1,2 @@
-export * from './src/readingTimeEstimate';
+export * from './src/readingTime';
+export * from './src/speak';
