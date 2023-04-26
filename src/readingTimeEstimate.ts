@@ -36,12 +36,17 @@ function calculateReadingTime(totalWords:number, wordsPerMinute?:number): Estima
  * @param selector 
  * @returns 
  */
-function getTotalWordsBySelector(selector:string): number {
-    if (!selector) {
+function getTotalWordsBySelector(option:RequestTimeOption): number {
+
+    if (option.content) {
+        return option.content.split(" ").length;
+    }
+
+    if (!option.selector) {
         return 0;
     }
 
-    const elements = document.querySelectorAll(selector);
+    const elements = document.querySelectorAll(option.selector);
     if (!elements || elements.length < 1) {
         return 0;
     }
@@ -67,12 +72,9 @@ function getTime(option:RequestTimeOption): number | undefined {
     if (!option) {
         return 0;
     }
-    let totalWords = 0;
-    if (option.selector) {
-        totalWords = getTotalWordsBySelector(option.selector);
-    }
-    else if (option.content) {
-        totalWords = option.content.split(" ").length;
+    let totalWords = getTotalWordsBySelector(option);
+    if (!totalWords) {
+        return 0;
     }
     
     const time = calculateReadingTime(totalWords, option.wordsPerMinute);
