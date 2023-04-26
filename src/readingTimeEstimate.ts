@@ -33,15 +33,15 @@ function calculateReadingTime(totalWords:number, wordsPerMinute?:number): Estima
 
 /**
  * get total words count by selectors
- * @param selectors 
+ * @param selector 
  * @returns 
  */
-function getTotalWords(selectors:string): number {
-    if (!selectors) {
+function getTotalWordsBySelector(selector:string): number {
+    if (!selector) {
         return 0;
     }
 
-    const elements = document.querySelectorAll(selectors);
+    const elements = document.querySelectorAll(selector);
     if (!elements || elements.length < 1) {
         return 0;
     }
@@ -67,8 +67,14 @@ function getTime(option:RequestTimeOption): number | undefined {
     if (!option) {
         return 0;
     }
-
-    const totalWords = getTotalWords(option.selector);
+    let totalWords = 0;
+    if (option.selector) {
+        totalWords = getTotalWordsBySelector(option.selector);
+    }
+    else if (option.content) {
+        totalWords = option.content.split(" ").length;
+    }
+    
     const time = calculateReadingTime(totalWords, option.wordsPerMinute);
     if (!time) {
         0;
@@ -76,4 +82,4 @@ function getTime(option:RequestTimeOption): number | undefined {
     return time.data;
 }
 
-export {calculateReadingTime as calculate, getTotalWords, getTime};
+export {calculateReadingTime as calculate, getTotalWordsBySelector as getTotalWords, getTime};

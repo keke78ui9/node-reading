@@ -3,12 +3,18 @@
  */
 export interface RequestTimeOption {
     /**
-     * single selector to lookup for the content from web page.
+     * selector, if provided will search the content from provided selector
      */
-    selector: string;
+    selector?: string;
+
+    /**
+     * instead of use selector query DOM to find content, pass content directly.
+     */
+    content?:string;
     
     /**
      * optional, words per minutes.
+     * default is 200, 200 words per minute.
      */
     wordsPerMinute?:number;
 }
