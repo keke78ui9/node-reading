@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import {calculate, getTotalWords, getTime} from '../src/readingTimeEstimate';
+import {calculate, getTotalWords, getTime} from '../src/readingTime';
 import {describe, expect, test} from '@jest/globals';
 import { RequestTimeOption } from '../src/requestTimeOption';
 
@@ -47,13 +47,18 @@ describe('get total words from DOM', () => {
     });
 
     test('if selector is invalid input should return 0', () => {
-        const result = getTotalWords('');
+        const option = {
+            selector: ''
+        } as RequestTimeOption;
+        const result = getTotalWords(option);
         expect(result).toBe(0);
     })
 
     test('if selector not exist at DOM should return 0', () => {
-        
-        const result = getTotalWords('.target');
+        const option = {
+            selector: '.target'
+        } as RequestTimeOption;
+        const result = getTotalWords(option);
         expect(result).toBe(0);
     })
 
@@ -62,7 +67,10 @@ describe('get total words from DOM', () => {
         div.setAttribute('class', 'target');
         document.body.appendChild(div);
         
-        const result = getTotalWords('target');
+        const option = {
+            selector: 'target'
+        } as RequestTimeOption;
+        const result = getTotalWords(option);
         expect(result).toBe(0);
     })
 
@@ -73,7 +81,10 @@ describe('get total words from DOM', () => {
         div.textContent = "test apple is check"
         document.body.appendChild(div);
         
-        const result = getTotalWords('.target');
+        const option = {
+            selector: '.target'
+        } as RequestTimeOption;
+        const result = getTotalWords(option);
         expect(result).toBe(4);
 
     })
