@@ -84,4 +84,4 @@ function getTime(option:RequestTimeOption): number | undefined {
     return time.data;
 }
 
-export {calculateReadingTime as calculate, getTotalWordsBySelector as getTotalWords, getTime};
+export {getTime};
