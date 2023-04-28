@@ -9,3 +9,7 @@ export interface EstimateResult {
 }
 
 export function getTime(option: RequestTimeOption): number | undefined;
+
+export function calculateReadingTime(totalWords:number, wordsPerMinute?:number): EstimateResult;
+
+export function getTotalWordsBySelector(option:RequestTimeOption): number;

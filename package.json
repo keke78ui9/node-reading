@@ -1,6 +1,6 @@
 {
   "name": "@keke78ui9/node-reading",
-  "version": "1.0.15",
+  "version": "1.0.19",
   "description": "TypeScript Node.js library to support reading.",
   "main": "index.ts",
   "directories": {
