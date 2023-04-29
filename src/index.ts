@@ -1,4 +1,4 @@
-import {getTime} from './readingTime';
+import {getTime, getText} from './readingTime';
 import {RequestTimeOption} from './requestTimeOption';
 
-export {getTime, RequestTimeOption};
+export {getTime, RequestTimeOption, getText};

@@ -112,5 +112,5 @@ export
     // calculateReadingTime as calculate, 
     // getTotalWordsBySelector as getTotalWords, 
     getTime,
-    // getText
+    getText
 };
