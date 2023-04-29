@@ -32,12 +32,39 @@ function calculateReadingTime(totalWords:number, wordsPerMinute?:number): Estima
 }
 
 /**
+ * get text from HTML
+ * @param html HTML
+ * @returns content or empty string
+ */
+function getText(html:string):string|null {
+    if (!html) {
+        return '';
+    }
+
+    const domParser = new DOMParser();
+    const htmlDOM = domParser.parseFromString(html, 'text/html');
+    const bodyDOM = htmlDOM.querySelector("body");
+    if (!bodyDOM) {
+        return '';
+    }
+    return bodyDOM.textContent
+}
+
+/**
  * get total words count by selectors
  * @param selector 
  * @returns 
  */
 function getTotalWordsBySelector(option:RequestTimeOption): number {
 
+    if (option.html) {
+        const content = getText(option.html);
+        if (!content) {
+            return 0;
+        }
+        return content.split(" ").length;
+    }
+    
     if (option.content) {
         return option.content.split(" ").length;
     }

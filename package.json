@@ -1,6 +1,6 @@
 {
   "name": "@keke78ui9/node-reading",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "TypeScript Node.js library to support reading.",
   "main": "build/main/readingTime.js",
   "typings": "build/main/readingTime.d.ts",
