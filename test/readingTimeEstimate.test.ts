@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import {calculate, getTotalWords, getTime} from '../src/readingTime';
+import {calculate, getTotalWords, getTime, getText} from '../src/readingTime';
 import {describe, expect, test} from '@jest/globals';
 import { RequestTimeOption } from '../src/requestTimeOption';
 
@@ -137,6 +137,22 @@ describe('get reading time by target selectors', () => {
         const result = getTime({
             selector: '.target'
         } as RequestTimeOption);
+        expect(result).toBe(1);
+    });
+})
+
+describe('get total words from HTML', () => {
+    test('valid html should get total words', () => {
+        const text =  getText("<p>get total words count</p><p>total words</p>");
+
+        expect(text).toBe('get total words counttotal words');
+    });
+
+    test('valid html should get correct time', () => {
+        const result =  getTime({
+            html: '<p>get total words count</p>'
+        });
+
         expect(result).toBe(1);
     });
 })

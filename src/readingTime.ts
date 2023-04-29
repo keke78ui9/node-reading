@@ -111,4 +111,10 @@ function getTime(option:RequestTimeOption): number | undefined {
     return time.data;
 }
 
-export {getTime};
+export 
+{
+    calculateReadingTime as calculate, 
+    getTotalWordsBySelector as getTotalWords, 
+    getTime,
+    getText
+};
