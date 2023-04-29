@@ -36,18 +36,14 @@ function calculateReadingTime(totalWords:number, wordsPerMinute?:number): Estima
  * @param html HTML
  * @returns content or empty string
  */
-function getText(html:string):string|null {
-    if (!html) {
+function getText(htmlString:string):string|null {
+    if (!htmlString) {
         return '';
     }
 
-    const domParser = new DOMParser();
-    const htmlDOM = domParser.parseFromString(html, 'text/html');
-    const bodyDOM = htmlDOM.querySelector("body");
-    if (!bodyDOM) {
-        return '';
-    }
-    return bodyDOM.textContent
+    let rep1 = htmlString.replace(/<[^>]+>/g, ' ');
+    let rep2 = rep1.replace(/ +/g, ' ');
+    return rep2.trim();
 }
 
 /**
@@ -113,8 +109,8 @@ function getTime(option:RequestTimeOption): number | undefined {
 
 export 
 {
-    calculateReadingTime as calculate, 
-    getTotalWordsBySelector as getTotalWords, 
+    // calculateReadingTime as calculate, 
+    // getTotalWordsBySelector as getTotalWords, 
     getTime,
-    getText
+    // getText
 };

@@ -1,3 +1,4 @@
-import './readingTime';
-import './requestTimeOption';
-import './estimateResult';
+import {getTime} from './readingTime';
+import {RequestTimeOption} from './requestTimeOption';
+
+export {getTime, RequestTimeOption};

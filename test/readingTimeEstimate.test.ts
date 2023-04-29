@@ -143,9 +143,9 @@ describe('get reading time by target selectors', () => {
 
 describe('get total words from HTML', () => {
     test('valid html should get total words', () => {
-        const text =  getText("<p>get total words count</p><p>total words</p>");
+        const text = getText("<p>get total words count</p><p>total words</p>");
 
-        expect(text).toBe('get total words counttotal words');
+        expect(text).toBe('get total words count total words');
     });
 
     test('valid html should get correct time', () => {
