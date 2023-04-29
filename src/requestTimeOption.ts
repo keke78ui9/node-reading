@@ -3,12 +3,17 @@
  */
 export interface RequestTimeOption {
     /**
-     * selector, if provided will search the content from provided selector
+     * selector, if provided search DOM content by selector.
      */
     selector?: string;
 
     /**
-     * instead of use selector query DOM to find content, pass content directly.
+     * the HTML, if provided will parse to find content.
+     */
+    html?:string;
+
+    /**
+     * the content or article, use to process word count.
      */
     content?:string;
     

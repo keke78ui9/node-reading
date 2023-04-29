@@ -1,18 +1,24 @@
 {
   "name": "@keke78ui9/node-reading",
-  "version": "1.0.9",
+  "version": "1.0.23",
   "description": "TypeScript Node.js library to support reading.",
-  "main": "index.ts",
+  "main": "build/main/readingTime.js",
+  "typings": "build/main/readingTime.d.ts",
+  "module": "build/main/readingTime.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "build:main": "tsc -p tsconfig.json",
     "test": "jest",
     "test:coverage": "jest --coverage --silent"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
+  "keywords": [
+    "typescript"
+  ],
   "repository": "https://github.com/keke78ui9/node-reading.git",
   "author": "keke78ui9",
   "license": "ISC",
