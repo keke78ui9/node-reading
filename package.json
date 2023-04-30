@@ -19,7 +19,10 @@
     "registry": "https://npm.pkg.github.com"
   },
   "keywords": [
-    "typescript"
+    "typescript",
+    "reading",
+    "speak",
+    "html"
   ],
   "repository": "https://github.com/keke78ui9/node-reading.git",
   "author": "keke78ui9",
