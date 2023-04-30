@@ -2,9 +2,10 @@
  * @jest-environment jsdom
  */
 
-import {calculate, getTotalWords, getTime} from '../src/readingTime';
+import {getTime} from '../src/readingTime';
 import {describe, expect, test} from '@jest/globals';
-import { RequestTimeOption } from '../src/requestTimeOption';
+import { readingTimeOption } from '../src/interfaces/readingTimeOption';
+import {calculateReadingTime as calculate, getTotalWordsBySelector as getTotalWords, getText} from '../src/helpers/readingHelpers';
 
 describe('calculate reading time', () => {
     test('If total words count is invalid - estimate reading time return 0', () => {
@@ -49,7 +50,7 @@ describe('get total words from DOM', () => {
     test('if selector is invalid input should return 0', () => {
         const option = {
             selector: ''
-        } as RequestTimeOption;
+        } as readingTimeOption;
         const result = getTotalWords(option);
         expect(result).toBe(0);
     })
@@ -57,7 +58,7 @@ describe('get total words from DOM', () => {
     test('if selector not exist at DOM should return 0', () => {
         const option = {
             selector: '.target'
-        } as RequestTimeOption;
+        } as readingTimeOption;
         const result = getTotalWords(option);
         expect(result).toBe(0);
     })
@@ -69,7 +70,7 @@ describe('get total words from DOM', () => {
         
         const option = {
             selector: 'target'
-        } as RequestTimeOption;
+        } as readingTimeOption;
         const result = getTotalWords(option);
         expect(result).toBe(0);
     })
@@ -83,7 +84,7 @@ describe('get total words from DOM', () => {
         
         const option = {
             selector: '.target'
-        } as RequestTimeOption;
+        } as readingTimeOption;
         const result = getTotalWords(option);
         expect(result).toBe(4);
 
@@ -98,21 +99,21 @@ describe('get reading time by target selectors', () => {
     test('if pass invalid selectors should return 0', () => {
         const result = getTime({
             selector: ''
-        } as RequestTimeOption);
+        } as readingTimeOption);
         expect(result).toBe(0);
     });
 
     test('if pass one selector not exist should return 0', () => {
         const result = getTime({
             selector: '.test_selector'
-        } as RequestTimeOption);
+        } as readingTimeOption);
         expect(result).toBe(0);
     });
 
     test('if pass more then one selectors and not exist should return 0', () => {
         const result = getTime({
             selector: '.test_selector, .other-selector'
-        } as RequestTimeOption);
+        } as readingTimeOption);
         expect(result).toBe(0);
     });
 
@@ -123,7 +124,7 @@ describe('get reading time by target selectors', () => {
 
         const result = getTime({
             selector: '.target'
-        } as RequestTimeOption);
+        } as readingTimeOption);
         expect(result).toBe(0);
 
     });
@@ -136,7 +137,23 @@ describe('get reading time by target selectors', () => {
 
         const result = getTime({
             selector: '.target'
-        } as RequestTimeOption);
+        } as readingTimeOption);
+        expect(result).toBe(1);
+    });
+})
+
+describe('get total words from HTML', () => {
+    test('valid html should get total words', () => {
+        const text = getText("<p>get total words count</p><p>total words</p>");
+
+        expect(text).toBe('get total words count total words');
+    });
+
+    test('valid html should get correct time', () => {
+        const result =  getTime({
+            html: '<p>get total words count</p>'
+        });
+
         expect(result).toBe(1);
     });
 })
