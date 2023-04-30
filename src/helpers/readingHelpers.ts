@@ -1,4 +1,5 @@
 import { EstimateResult } from "../estimateResult";
+import { contentOption } from "../interfaces/contentOption";
 import {readingTimeOption} from '../interfaces/readingTimeOption'
 
 /**
@@ -36,7 +37,7 @@ function calculateReadingTime(totalWords:number, wordsPerMinute?:number): Estima
  * @param html HTML
  * @returns content or empty string
  */
-function getText(htmlString:string):string|null {
+function getText(htmlString:string):string {
     if (!htmlString) {
         return '';
     }
@@ -46,7 +47,32 @@ function getText(htmlString:string):string|null {
     return rep2.trim();
 }
 
-// function getContent()
+/**
+ * get text by option
+ * @param option 
+ * @returns 
+ */
+function getContent(option:contentOption): string {
+    if (option.html) {
+        return getText(option.html);
+    }
+    else if (option.content) {
+        return option.content;
+    }
+    else if (option.selector) {
+        const elements = document.querySelectorAll(option.selector);
+        let content = '';
+        if (elements && elements.length > 0) {            
+            elements.forEach((ele) => {
+                content += ele.textContent;
+            });
+        }
+        return content;
+    }
+    else {
+        return '';
+    }
+}
 
 /**
  * get total words count by selectors
@@ -55,38 +81,13 @@ function getText(htmlString:string):string|null {
  */
 function getTotalWordsBySelector(option:readingTimeOption): number {
 
-    if (option.html) {
-        const content = getText(option.html);
-        if (!content) {
-            return 0;
-        }
-        return content.split(" ").length;
-    }
-    
-    if (option.content) {
-        return option.content.split(" ").length;
-    }
-
-    if (!option.selector) {
-        return 0;
-    }
-
-    const elements = document.querySelectorAll(option.selector);
-    if (!elements || elements.length < 1) {
-        return 0;
-    }
-
-    let content = '';
-    elements.forEach((ele) => {
-        content += ele.textContent;
-    });
-
+    const content = getContent(option);
     if (!content) {
         return 0;
     }
 
-    return content.split(" ").length;
+    return content.split(' ').length;
 }
 
 
-export {calculateReadingTime, getText, getTotalWordsBySelector};
+export {calculateReadingTime, getText, getTotalWordsBySelector, getContent};
