@@ -1,7 +1,7 @@
 /**
  * option to calculate the reading time
  */
-export interface RequestTimeOption {
+export interface readingTimeOption {
     /**
      * selector, if provided search DOM content by selector.
      */

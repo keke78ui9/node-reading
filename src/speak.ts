@@ -1,6 +1,6 @@
-import { SpeakOption } from "./speakOption";
+import { speakOption } from "./interfaces/speakOption";
 
-function speak(option: SpeakOption) {
+function speak(option: speakOption) {
     
     var voices = window.speechSynthesis;
 

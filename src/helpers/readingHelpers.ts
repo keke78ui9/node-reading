@@ -1,5 +1,5 @@
 import { EstimateResult } from "../estimateResult";
-import {RequestTimeOption} from '../requestTimeOption'
+import {readingTimeOption} from '../interfaces/readingTimeOption'
 
 /**
  * calculate reading time (default WPF is 200)
@@ -31,8 +31,6 @@ function calculateReadingTime(totalWords:number, wordsPerMinute?:number): Estima
     return estimateRet;
 }
 
-
-
 /**
  * get text from HTML
  * @param html HTML
@@ -48,13 +46,14 @@ function getText(htmlString:string):string|null {
     return rep2.trim();
 }
 
+// function getContent()
 
 /**
  * get total words count by selectors
  * @param selector 
  * @returns 
  */
-function getTotalWordsBySelector(option:RequestTimeOption): number {
+function getTotalWordsBySelector(option:readingTimeOption): number {
 
     if (option.html) {
         const content = getText(option.html);

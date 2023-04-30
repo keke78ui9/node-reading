@@ -1,6 +1,6 @@
 import {getTime} from './readingTime';
-import {RequestTimeOption} from './requestTimeOption';
+import {readingTimeOption} from './interfaces/readingTimeOption';
 import {speak} from './speak';
-import {SpeakOption} from './speakOption';
+import {speakOption} from './interfaces/speakOption';
 
-export {getTime, RequestTimeOption, speak, SpeakOption};
+export {getTime, readingTimeOption as RequestTimeOption, speak, speakOption as SpeakOption};

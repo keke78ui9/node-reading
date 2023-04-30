@@ -1,4 +1,4 @@
-import { RequestTimeOption } from "./requestTimeOption";
+import { readingTimeOption } from "./interfaces/readingTimeOption";
 import {calculateReadingTime, getTotalWordsBySelector} from './helpers/readingHelpers'
 
 
@@ -7,7 +7,7 @@ import {calculateReadingTime, getTotalWordsBySelector} from './helpers/readingHe
  * @param option 
  * @returns number as minutes
  */
-function getTime(option:RequestTimeOption): number | undefined {
+function getTime(option:readingTimeOption): number | undefined {
     if (!option) {
         return 0;
     }
