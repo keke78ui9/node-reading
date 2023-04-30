@@ -2,9 +2,10 @@
  * @jest-environment jsdom
  */
 
-import {calculate, getTotalWords, getTime, getText} from '../src/readingTime';
+import {getTime} from '../src/readingTime';
 import {describe, expect, test} from '@jest/globals';
 import { RequestTimeOption } from '../src/requestTimeOption';
+import {calculateReadingTime as calculate, getTotalWordsBySelector as getTotalWords, getText} from '../src/helpers/readingHelpers';
 
 describe('calculate reading time', () => {
     test('If total words count is invalid - estimate reading time return 0', () => {
